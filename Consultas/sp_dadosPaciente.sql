@@ -1,3 +1,4 @@
+--Proc responsável por trazer dados completos do paciente e dependentes. 
 CREATE PROCEDURE cadastro_paciente 
 	@paciente_id INT 
 	
