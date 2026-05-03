@@ -1,4 +1,4 @@
-# 📊 Camada de Consultas - Vitallis
+# Camada de Consultas - Vitallis
 
 Esta pasta reúne scripts relacionados à camada de acesso a dados do projeto **Vitallis**, incluindo:
 
@@ -8,7 +8,7 @@ Esta pasta reúne scripts relacionados à camada de acesso a dados do projeto **
 
 Esses objetos representam operações típicas de uma aplicação de gestão de atendimentos em uma clínica médica, como consultas de dados, agendamentos e manipulação de informações operacionais.
 
-## 🎯 Objetivo
+## Objetivo
 
 O objetivo desta estrutura é simular um cenário real de aplicação, onde o banco de dados atua como backend para consumo de dados por uma aplicação (API, sistema web, Power Apps, etc.).
 
