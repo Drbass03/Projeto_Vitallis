@@ -25,13 +25,6 @@ WHERE @cpf IS NULL AND p.nome = @nome
 	AND c.diaHora <= @data_inicial 
 	AND c.diaHora < DATEADD(DAY, 1, @data_final) 
 
---índices utilizados
-CREATE INDEX idx_paciente_cpf ON sch_pacientes.paciente (cpf) 
-INCLUDE (nome, dt_Nasc);
-
-CREATE INDEX idx_consulta_medico_data ON sch_atendimento.consulta (idMedico, diaHora) 
-INCLUDE (idPaciente);
-
 
 
 -- 02 Consulta utilizada para listar atendimentos do médico na periodo selecionado
