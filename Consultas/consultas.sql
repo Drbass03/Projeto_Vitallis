@@ -43,11 +43,7 @@ WHERE m.id_medico = @idMedico
 
 -- 03 Consulta para listar os pedidos de exames e resultados
 
-DECLARE @nome VARCHAR (30) = 'Laura Cardoso'
-DECLARE @cpf VARCHAR (11) = '42188602029'
-DECLARE @pedido VARCHAR = 100 
-
-SELECT p.id_paciente,
+ SELECT p.id_paciente,
 	   p.nome AS nome_paciente,
 	   pd.numeroPedido AS numero_do_pedido,
 	   pd.dataPedido AS data_do_pedido,
