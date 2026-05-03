@@ -1,11 +1,5 @@
 -- 01 Consulta para listar consultas marcadas por nome ou CPF
 
-DECLARE @nome VARCHAR (30) = 'Gustavo Jesus'
-DECLARE @cpf VARCHAR (11) = '79203745377'
-DECLARE @data_inicial DATE = '2026-01-01'
-DECLARE @data_final DATE = '2026-12-31'   
-
-
 SELECT p.nome, p.CPF, c.diaHora, m.nome AS nome_medico, m.especialidade, p.idade
 FROM sch_atendimento.consulta c
 JOIN sch_adm_vitalis.medico m ON c.idMedico = m.id_medico 
@@ -138,10 +132,6 @@ WHERE p.nome = @nome
 
 
 -- 4  Consulta para retornar historico de exames por data e paciente
-
-DECLARE @data_inicial DATE = '2026-01-01'
-DECLARE @data_final DATE = '2026-12-31'
-DECLARE @paciente INT = 175
 
 ;WITH historicoExames AS (
 
