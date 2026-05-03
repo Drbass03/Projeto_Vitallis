@@ -1,3 +1,4 @@
+--Esta view é utilizada para retornar todas os exames agendados no dia. Informando qual tipo do exame que será realizado e os dados do paciente. 
 
 CREATE VIEW vw_exames_dia 
 AS 
