@@ -12,7 +12,7 @@ Esses objetos representam operações típicas de uma aplicação de gestão de 
 
 O objetivo desta estrutura é simular um cenário real de aplicação, onde o banco de dados atua como backend para consumo de dados por uma aplicação (API, sistema web, Power Apps, etc.).
 
-## ⚙️ Uso de Parâmetros
+## Uso de Parâmetros
 
 As **stored procedures** e algumas queries foram desenvolvidas utilizando **parâmetros de entrada**, com os seguintes propósitos:
 
