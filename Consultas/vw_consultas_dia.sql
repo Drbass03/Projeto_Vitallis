@@ -1,3 +1,5 @@
+--Esta view é utilizada para retornar todas as consultas agendadas no dia. Informando qual especialidade, medico e dados do paciente. 
+
 CREATE VIEW dbo.vw_consultas_dia 
 AS 
 
