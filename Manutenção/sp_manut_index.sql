@@ -3,7 +3,7 @@ CREATE OR ALTER PROCEDURE sp_manut_index
     
 AS
 BEGIN
-    -- 1. Criação da tabela temporária 
+    --Criação da tabela temporária 
     CREATE TABLE #manut_idx (
         ID INT IDENTITY(1,1) PRIMARY KEY,
         data_coleta DATE,
@@ -15,7 +15,7 @@ BEGIN
         processado BIT DEFAULT 0 
     );
 
-    -- 2. Carga inicial 
+    --Carga inicial 
     INSERT INTO #manut_idx (data_coleta, nome_schema, nome_tabela, nome_indice, tipo_indice, percent_frag)
     SELECT 
         CAST(GETDATE() AS DATE), 
@@ -30,7 +30,7 @@ BEGIN
      WHERE i.name IS NOT NULL;  -- Ignora Heaps 
 
 
-    -- 3 Construção da estrutura do email informativo
+    -- Construção da estrutura do email informativo
 
     IF NOT EXISTS (SELECT 1 FROM #manut_idx)
         RETURN; 
@@ -90,7 +90,7 @@ BEGIN
 
 
 
-   -- 4. Declaração de variáveis para o loop
+   --Declaração de variáveis para o loop
     DECLARE 
         @ID INT,
         @Schema SYSNAME,
@@ -99,7 +99,7 @@ BEGIN
         @Frag DECIMAL(8,2),
         @ComandoSQL NVARCHAR(MAX);
 
-    -- 5. O Loop WHILE
+    --O Loop WHILE
     WHILE EXISTS (SELECT 1 FROM #manut_idx WHERE processado = 0)
     BEGIN 
         SELECT TOP 1 
@@ -111,7 +111,7 @@ BEGIN
         FROM #manut_idx
         WHERE processado = 0;
 
-        --6 Lógica dO SQL Dinamico 
+        --Lógica dO SQL Dinamico 
         IF @Frag > 50.0
             SET @ComandoSQL = N'ALTER INDEX ' + QUOTENAME(@Index) + 
                               N' ON ' + QUOTENAME(@Schema) + N'.' + QUOTENAME(@Table) + 
@@ -123,17 +123,17 @@ BEGIN
         ELSE
             SET @ComandoSQL = NULL;
         
-        --7 Execução
+        --Execução
         IF @ComandoSQL IS NOT NULL
         BEGIN
             
             EXEC sp_executesql @ComandoSQL;
         END
 
-        -- Atualiza o staus indicando que o indice sofreu rebiuld/reorganize
+        --Atualiza o staus indicando que o indice sofreu rebiuld/reorganize
         UPDATE #manut_idx 
         SET processado = 1 
         WHERE ID = @ID;
 
-    END -- Fim do WHILE
+    END --Fim do WHILE
 END
