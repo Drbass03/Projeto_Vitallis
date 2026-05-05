@@ -71,7 +71,7 @@ A rotina analisa os índices e aplica ações corretivas conforme melhores prát
 - **REORGANIZE** → Fragmentação moderada  
 - **REBUILD** → Fragmentação elevada  
 
-O processo é controlado via parâmetro `@thresholdPercent`.
+Considerando o reorganize acima de 30% de fragmentação e acima de 50% rebiuld
 
 ### Implementação
 
