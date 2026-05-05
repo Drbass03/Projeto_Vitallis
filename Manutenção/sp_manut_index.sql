@@ -1,9 +1,9 @@
-ALTER PROCEDURE sp_manut_index
+CREATE OR ALTER PROCEDURE sp_manut_index
  @DB_name VARCHAR (30) = 'treinamento'
     
 AS
 BEGIN
-    -- 1. Criação da tabela temporária (ajustado IDENTITY e vírgulas)
+    -- 1. Criação da tabela temporária 
     CREATE TABLE #manut_idx (
         ID INT IDENTITY(1,1) PRIMARY KEY,
         data_coleta DATE,
@@ -15,7 +15,7 @@ BEGIN
         processado BIT DEFAULT 0 
     );
 
-    -- 2. Carga inicial (ajustado parâmetros da função e nomes de colunas)
+    -- 2. Carga inicial 
     INSERT INTO #manut_idx (data_coleta, nome_schema, nome_tabela, nome_indice, tipo_indice, percent_frag)
     SELECT 
         CAST(GETDATE() AS DATE), 
@@ -26,7 +26,7 @@ BEGIN
         ROUND(ps.avg_fragmentation_in_percent, 2)
     FROM sys.dm_db_index_physical_stats(DB_ID(@DB_name), NULL, NULL, NULL, 'SAMPLED') ps
     JOIN sys.indexes i ON ps.object_id = i.object_id AND ps.index_id = i.index_id
-    --WHERE ps.page_count > 1000 -- Boa prática: ignora tabelas pequenas
+    WHERE ps.page_count > 1000 -- ignora tabelas pequenas
      WHERE i.name IS NOT NULL;  -- Ignora Heaps 
 
 
@@ -112,11 +112,11 @@ BEGIN
         WHERE processado = 0;
 
         --6 Lógica dO SQL Dinamico 
-        IF @Frag > 30.0
+        IF @Frag > 50.0
             SET @ComandoSQL = N'ALTER INDEX ' + QUOTENAME(@Index) + 
                               N' ON ' + QUOTENAME(@Schema) + N'.' + QUOTENAME(@Table) + 
                               N' REBUILD;';
-        ELSE IF @Frag > 5.0
+        ELSE IF @Frag > 30.0
             SET @ComandoSQL = N'ALTER INDEX ' + QUOTENAME(@Index) + 
                               N' ON ' + QUOTENAME(@Schema) + N'.' + QUOTENAME(@Table) + 
                               N' REORGANIZE;';
@@ -130,7 +130,7 @@ BEGIN
             EXEC sp_executesql @ComandoSQL;
         END
 
-        -- Atualiza para evitar loop infinito
+        -- Atualiza o staus indicando que o indice sofreu rebiuld/reorganize
         UPDATE #manut_idx 
         SET processado = 1 
         WHERE ID = @ID;
