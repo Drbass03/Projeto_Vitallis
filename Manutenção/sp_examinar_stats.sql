@@ -1,10 +1,10 @@
-ALTER PROCEDURE sp_examinar_stats 
+CREATE OR ALTER PROCEDURE sp_examinar_stats 
 
 AS 
 BEGIN
     SET NOCOUNT ON;
 
-    -- 1. Criação da tabela temporária 
+    --  Criação da tabela temporária 
     CREATE TABLE #check_stats (
         ID INT IDENTITY(1,1) PRIMARY KEY,
         nome_stats SYSNAME, 
@@ -16,7 +16,7 @@ BEGIN
         stats_check BIT DEFAULT 0 
     );
 
-    -- 2. Inserção dos dados (Corrigido SELECT e JOINs)
+    -- Inserção dos dados
     INSERT INTO #check_stats (nome_stats, nome_tabela, num_linhas, ultima_att, num_modificacoes, drift_percentual)
     SELECT 
         s.name,
@@ -31,7 +31,7 @@ BEGIN
     WHERE o.type = 'U' -- Apenas tabelas de usuário
       AND sp.modification_counter > (sp.rows * 0.10); -- Filtro de Drift de 10% 
 
-    --3. Adicionando os dados capturados em uma tabela de log para persistência
+    -- Adicionando os dados capturados em uma tabela de log para persistência das informações coletadas.
     INSERT INTO log_estatisticas_drift (StatsName, nome_tabela, num_linhas, ultima_att, DriftPercent,check_stats)
 
     SELECT nome_stats,
@@ -50,8 +50,8 @@ BEGIN
    
     SELECT @HTML_LINHAS =
 (
-    
-    SELECT
+    -- Criação da tabela que será enviada junto ao corpo do email disparado informando quais tabelas teve estatisticas atualizadas. 
+    SELECT 
         '<tr>' +
         '<td>' + CAST(ID AS VARCHAR) + '</td>' +
         '<td>' + nome_stats + '</td>' +
@@ -140,10 +140,10 @@ com base no volume de modificações identificado antes da manutenção.
 
 
 
-    -- 4. Declaração de variáveis para o loop
+    --  Declaração de variáveis para o loop
     DECLARE @ID INT, @stats SYSNAME, @tabela SYSNAME, @comandoSQL NVARCHAR(MAX);
 
-    -- 5. Loop de Processamento
+    -- Loop de Processamento
     WHILE EXISTS (SELECT 1 FROM #check_stats WHERE stats_check = 0)
     BEGIN
         SELECT TOP 1 
@@ -165,7 +165,7 @@ com base no volume de modificações identificado antes da manutenção.
         UPDATE #check_stats     
         SET stats_check = 1 
 
-        -- Atualiza o log
+        -- Atualiza a tabela que servirá como histórico de todas as operações de att de estatisticas. 
         UPDATE log_estatisticas_drift
         SET check_stats = 1     
     END 
