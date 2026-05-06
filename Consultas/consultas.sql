@@ -68,7 +68,7 @@ LEFT JOIN sch_laboratorio.exame e
 
 WHERE pd.numeroPedido = @pedido 
 	
-UNION ALL 
+UNION ALL -- UNION ALL utilizado para evitar o operador OR, sendo possível a utilização do indice em ambas as buscas 
 
 SELECT p.id_paciente,
 	   p.nome AS nome_paciente,
