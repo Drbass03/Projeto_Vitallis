@@ -7,7 +7,7 @@ Esta pasta contém os scripts responsáveis pela política de **backup e recuper
 Garantir a **disponibilidade**, **integridade** e **recuperabilidade** dos dados, atendendo aos requisitos definidos de:
 
 - **RPO (Recovery Point Objective):** até 15 minutos  
-- **RTO (Recovery Time Objective):** até 5 minutos  
+- **RTO (Recovery Time Objective):** até 30 minutos  
 
 ##  Janela de Operação
 
