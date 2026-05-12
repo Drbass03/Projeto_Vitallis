@@ -25,7 +25,7 @@ GRANT SELECT ON SCHEMA ::sch_adm_vitalis TO role_medico;
 /* Função de Row-Level Security (RLS) que permite acesso apenas aos registros
  cujo id do médico corresponde ao usuário da sessão atual (SESSION_CONTEXT).*/ 
 
---Permite 
+-- Função RLS para escrita 
 CREATE OR ALTER FUNCTION fn_rls_medico_write (@idMedico INT)
 RETURNS TABLE
 WITH SCHEMABINDING
@@ -37,7 +37,7 @@ RETURN
     OR IS_MEMBER('db_owner') = 1 
 );
 
-
+--Função RLS para leitura
 CREATE OR ALTER FUNCTION fn_rls_medico_read (@idMedico INT)
 RETURNS TABLE
 WITH SCHEMABINDING
@@ -62,7 +62,7 @@ ON sch_laboratorio.pedidoExame AFTER UPDATE,
 ADD BLOCK PREDICATE dbo.fn_rls_medico_write (idMedico)
 ON sch_laboratorio.pedidoExame AFTER INSERT 
 
-
+-- A policy garante que por exemplo, um pedido de exame possa ser alterado pelo médico que o criou, mas outros médicos podem visualizar. 
 
 
 /* 
