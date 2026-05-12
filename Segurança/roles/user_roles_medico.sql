@@ -1,4 +1,4 @@
---Role criada para usuário médico, define quais tabelas pode ter acesso para operações de leitura e escrita
+--Role criada para o usuário médico, define quais tabelas pode ter acesso para operações de leitura e escrita
 
 CREATE OR ALTER AUTHORIZATION ON ROLE:: role_medico TO dbo;
 
