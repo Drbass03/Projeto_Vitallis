@@ -28,7 +28,7 @@ BEGIN
           AND event_time > DATEADD(MINUTE, -@MinutosAtras, GETDATE())
         ORDER BY event_time DESC;
 
-        SET @CorpoEmail = '⚠️ ALERTA CRÍTICO DE SEGURANÇA ⚠️' + CHAR(13) + CHAR(10) +
+        SET @CorpoEmail = ' ALERTA CRÍTICO DE SEGURANÇA ' + CHAR(13) + CHAR(10) +
                           'Detectada alteração nas configurações de Auditoria do Servidor !' + CHAR(13) + CHAR(10) +
                           'Verifique os logs de auditoria imediatamente.' + CHAR(13) + CHAR(10) + CHAR(13) + CHAR(10) +
                           'Últimos eventos detectados:' + CHAR(13) + CHAR(10) +
@@ -37,7 +37,7 @@ BEGIN
         EXEC msdb.dbo.sp_send_dbmail
             @profile_name = 'Perfil_Email_Vitallis',
             @recipients = 'seu-email@dominio.com',
-            @subject = '🚨 URGENTE: Alteração na Auditoria do Sistema',
+            @subject = ' URGENTE: Alteração na Auditoria do Sistema',
             @body = @CorpoEmail,
             @importance = 'HIGH'; -- Define o e-mail como prioritário 
             
