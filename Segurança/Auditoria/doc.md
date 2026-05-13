@@ -80,7 +80,7 @@ O objetivo é permitir respostas mais rápidas a possíveis incidentes e fortale
 
 ---
 
-#  `sp_audit_change`
+##  `sp_audit_change`
 
 Esta procedure é utilizada em um Job do SQL Server Agent responsável por monitorar alterações nas configurações de auditoria e no estado dos arquivos de auditoria do ambiente.
 
