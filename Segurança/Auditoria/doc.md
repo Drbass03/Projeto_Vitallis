@@ -72,11 +72,15 @@ Também foram executados cenários de falha de login e operações em tabelas mo
 
 # Scripts de monitoramento e alertas. 
 
-Foram criados scripts que monitoram ações suspeitas e disparam alertas para o administrador do ambiente.
+Foram implementados scripts responsáveis pelo monitoramento de ações suspeitas e eventos críticos relacionados à segurança do ambiente.
+
+Essas rotinas são executadas automaticamente por meio do SQL Server Agent e realizam o disparo de alertas para o administrador sempre que comportamentos anômalos, falhas de auditoria ou alterações sensíveis são identificadas.
+
+O objetivo é permitir respostas mais rápidas a possíveis incidentes e fortalecer o controle e a governança do ambiente.
 
 ---
 
-##  `sp_audit_change`
+#  `sp_audit_change`
 
 Esta procedure é utilizada em um Job do SQL Server Agent responsável por monitorar alterações nas configurações de auditoria e no estado dos arquivos de auditoria do ambiente.
 
