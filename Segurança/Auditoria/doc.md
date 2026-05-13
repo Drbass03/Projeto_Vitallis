@@ -72,7 +72,8 @@ Também foram executados cenários de falha de login e operações em tabelas mo
 
 # Scripts de monitoramento e alertas. 
 
-Foram criados scripts que monitoram ações suspeitas e disparam alertas para o administrador do ambiente. 
+Foram criados scripts que monitoram ações suspeitas e disparam alertas para o administrador do ambiente.
+
 ---
 
 ##  `sp_audit_change`
