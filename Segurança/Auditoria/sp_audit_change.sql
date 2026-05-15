@@ -18,7 +18,7 @@ BEGIN
     -- 2. Se houver qualquer evento (mesmo que seja apenas 1), dispara o alerta 
     IF @Contador > 0
     BEGIN
-        -- Opcional: Captura o comando exato para colocar no e-mail
+        
         SELECT TOP 5 @DetalhesEventos = @DetalhesEventos + 
             'Data: ' + CAST(event_time AS VARCHAR) + 
             ' | Usuário: ' + server_principal_name + 
@@ -36,7 +36,7 @@ BEGIN
 
         EXEC msdb.dbo.sp_send_dbmail
             @profile_name = 'Perfil_Email_Vitallis',
-            @recipients = 'seu-email@dominio.com',
+            @recipients = 'dba@assistente.com.br',
             @subject = ' URGENTE: Alteração na Auditoria do Sistema',
             @body = @CorpoEmail,
             @importance = 'HIGH'; -- Define o e-mail como prioritário 
