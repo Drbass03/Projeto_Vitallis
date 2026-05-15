@@ -116,7 +116,7 @@ BEGIN
     EXEC msdb.dbo.sp_send_dbmail
         @profile_name = 'Assistente DBA II',
         @recipients = 'gbarcelos.lg@gmail.com',
-        @subject = '🚨 Alerta de Log Crítico',
+        @subject = ' Alerta de Log Crítico',
         @body = @BODY,
         @body_format = 'HTML'
 END
