@@ -132,7 +132,7 @@ com base no volume de modificações identificado antes da manutenção.
 
       EXEC msdb.dbo.sp_send_dbmail
         @profile_name = 'Assistente DBA II',
-        @recipients = 'gbarcelos.lg@gmail.com',
+        @recipients = 'dba@assitente.com.br',
         @subject = 'Informativo - Estatisticas Atualizadas',
         @body = @BODY,
         @body_format = 'HTML'
