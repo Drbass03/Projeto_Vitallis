@@ -24,7 +24,7 @@ BEGIN
 
         EXEC msdb.dbo.sp_send_dbmail
             @profile_name = 'ASSISTENTE DBA II', -- Seu perfil do Database Mail
-            @recipients = 'gbarcelos.lg@gmail.com ',
+            @recipients = 'dba@assistente.com.br',
             @subject = '⚠️ Alerta de Intrusão: Múltiplas Falhas de Login',
             @body = @CorpoEmail;
             
