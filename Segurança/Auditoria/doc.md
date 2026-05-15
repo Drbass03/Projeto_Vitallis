@@ -17,7 +17,6 @@ incluindo tentativas de autenticação e operações administrativas.
 ## Eventos Monitorados
 
 - Falhas de login
-- Tentativas de autenticação
 - Alterações administrativas
 - Mudanças em permissões
 - Operações relacionadas à segurança do servidor
@@ -62,19 +61,11 @@ Os eventos capturados são armazenados em arquivos de auditoria para posterior c
 
 ---
 
-# Validação dos Eventos
-
-Os testes de auditoria foram realizados simulando diferentes contextos de acesso, incluindo usuários administrativos, médicos e perfis com permissões restritas.
-
-Também foram executados cenários de falha de login e operações em tabelas monitoradas para validação da captura correta dos eventos de auditoria.
-
----
-
 # Scripts de monitoramento e alertas. 
 
 Foram implementados scripts responsáveis pelo monitoramento de ações suspeitas e eventos críticos relacionados à segurança do ambiente.
 
-Essas rotinas são executadas automaticamente por meio do SQL Server Agent e realizam o disparo de alertas para o administrador sempre que comportamentos anômalos, falhas de auditoria ou alterações sensíveis são identificadas.
+Essas rotinas são executadas automaticamente por meio do SQL Server Agent e realizam o disparo de alertas para o administrador sempre que comportamentos suspeitos, falhas de auditoria ou alterações sensíveis são identificadas.
 
 O objetivo é permitir respostas mais rápidas a possíveis incidentes e fortalecer o controle e a governança do ambiente.
 
