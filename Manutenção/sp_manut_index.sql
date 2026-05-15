@@ -82,7 +82,7 @@ BEGIN
 
     EXEC msdb.dbo.sp_send_dbmail
         @profile_name = 'Assistente DBA II',
-        @recipients = 'gbarcelos.lg@gmail.com',
+        @recipients = 'dba@assitente.com.br',
         @subject = '🔧 Manutenção índices',
         @body = @BODY,
         @body_format = 'HTML'
