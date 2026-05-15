@@ -11,7 +11,7 @@ BEGIN
     -- 1. Captura eventos de alteração de auditoria
     -- Action_ID 'AUDG' refere-se ao Audit Group Change
     SELECT @Contador = COUNT(*)
-    FROM sys.fn_get_audit_file('C:\Auditoria_Vitallis\mod1*', DEFAULT, DEFAULT)
+    FROM sys.fn_get_audit_file('C:\SQLAudit\Audit_*', DEFAULT, DEFAULT)
     WHERE (action_id = 'AUDG' OR class_type = 'AU') -- AUDG: Audit Change | AU: Audit
       AND event_time > DATEADD(MINUTE, -@MinutosAtras, GETDATE());
 
