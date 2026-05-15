@@ -102,12 +102,6 @@ Os alertas são disparados em cenários como:
 
 ---
 
-##  Considerações Finais
-
-- As rotinas seguem boas práticas de administração de banco de dados
-- O ambiente é monitorado de forma proativa
-- A manutenção é orientada por métricas reais 
-- A automação reduz dependência operacional e aumenta a confiabilidade
 
 
 
