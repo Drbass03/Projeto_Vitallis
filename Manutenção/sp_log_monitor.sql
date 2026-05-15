@@ -92,7 +92,7 @@ BEGIN
     SET @BODY = '
     <html>
     <body style="font-family: Arial; font-size: 12px;">
-    <h3>🚨 Alerta de Log - Espaço Crítico</h3>
+    <h3> Alerta de Log - Espaço Crítico</h3>
 
     <table border="1" cellspacing="0" cellpadding="5">
     <tr style="background-color:#2F4F4F;color:white;">
