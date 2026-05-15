@@ -85,7 +85,7 @@ O objetivo é permitir respostas mais rápidas a possíveis incidentes e fortale
 Esta procedure é utilizada em um Job do SQL Server Agent responsável por monitorar alterações nas configurações de auditoria e no estado dos arquivos de auditoria do ambiente.
 
 O objetivo é identificar mudanças que possam comprometer a rastreabilidade dos eventos auditados, como desativação da auditoria, 
-modificações nas specifications ou falhas relacionadas aos arquivos de armazenamento.
+modificações nas especificações ou falhas relacionadas aos arquivos de armazenamento.
 
 Essa implementação auxilia no fortalecimento da governança e no acompanhamento contínuo dos mecanismos de segurança do projeto. 
 
