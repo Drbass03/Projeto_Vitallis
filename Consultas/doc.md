@@ -40,6 +40,6 @@ Os scripts foram desenvolvidos com foco em:
 - Boas práticas de desenvolvimento em T-SQL
 - Clareza e organização para fins de portfólio
 
----
 
- *Este material faz parte de um projeto prático voltado ao estudo e aprimoramento em banco de dados, com foco em cenários reais de mercado.*
+
+
