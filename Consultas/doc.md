@@ -1,6 +1,6 @@
-# Camada de Consultas - Vitallis
+# Camada de Consultas 
 
-Esta pasta reúne scripts relacionados à camada de acesso a dados do projeto **Vitallis**, incluindo:
+Esta pasta reúne scripts relacionados à camada de acesso a dados do projeto, incluindo:
 
 - Queries
 - Views
