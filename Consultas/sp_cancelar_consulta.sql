@@ -23,7 +23,7 @@ BEGIN
         COMMIT;
     END TRY
     BEGIN CATCH
-        IF @@TRANCOUNT > 0 -- No momento da exceção o scrip identifica a transação aberta e então aplica o ROLLBACK   
+        IF @@TRANCOUNT > 0 -- No momento da exceção o scrip identifica se ha transação aberta e então aplica o ROLLBACK   
             ROLLBACK;
 
         THROW;
