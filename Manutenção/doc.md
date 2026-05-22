@@ -61,7 +61,7 @@ Caso o percentual ultrapasse o limite definido em `@thresholdPercent`, a estatí
 
 ##  `sp_historico_index`
 
-Responsável por identificar índices pouco utilizados. Esta proc tem como objetivo facilitar a limpeza de índices sem utilidade e, 
+Responsável por identificar índices pouco utilizados, esta proc tem como objetivo facilitar a limpeza de índices sem utilidade e, 
 como consequência, melhorar as operações de escrita nessas tabelas. 
 
 ### Características
