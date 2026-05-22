@@ -68,7 +68,7 @@ como consequência, melhorar as operações de escrita nessas tabelas.
 
 - Execução mensal via **SQL Server Agent Job**
 - Agendada para ocorrer uma vez por mês, mas pode ser adaptado a depender da carga de trabalho do ambiente
-- Utiliza a quantidade de leitura como parâmetro que pode ser alterada, considerando se a utilização do indice 
+- Utiliza a quantidade de leitura como parâmetro que pode ser alterado, considerando se a utilização do indice 
  é de fato baixa em considerando com a carga de trabalho
 
 ### Benefícios
