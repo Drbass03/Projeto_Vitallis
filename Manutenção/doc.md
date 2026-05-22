@@ -66,7 +66,7 @@ como consequência, melhorar as operações de escrita nessas tabelas.
 
 ### Características
 
-- Execução diária via **SQL Server Agent Job**
+- Execução mensal via **SQL Server Agent Job**
 - Agendada para ocorrer uma vez por mês, mas pode ser adaptado a depender da carga de trabalho do ambiente
 - Utiliza a quantidade de leitura como parâmetro que pode ser alterar, considerando se a utilização do indice 
  é de fato baixa em considerando com a carga de trabalho
