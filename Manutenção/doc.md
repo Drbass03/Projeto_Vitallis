@@ -44,9 +44,6 @@ Responsável por identificar e corrigir **data drift** nas estatísticas das tab
 
 A procedure avalia a necessidade de atualização com base na seguinte lógica:
 
-
-Caso o percentual ultrapasse o limite definido em `@thresholdPercent`, a estatística é atualizada automaticamente.
-
 ### Características
 
 - Execução diária via **SQL Server Agent Job**
@@ -57,6 +54,28 @@ Caso o percentual ultrapasse o limite definido em `@thresholdPercent`, a estatí
 
 -  Melhoria na qualidade dos planos de execução
 -  Otimização de queries
+
+Caso o percentual ultrapasse o limite definido em `@thresholdPercent`, a estatística é atualizada automaticamente.
+
+---
+
+##  `sp_historico_index`
+
+Responsável por identificar índices pouco utilizados. Esta proc tem como objetivo facilitar a limpeza de índices sem utilidade e, 
+como consequência, melhorar as operações de escrita nessas tabelas. 
+
+### Características
+
+- Execução diária via **SQL Server Agent Job**
+- Agendada para ocorrer uma vez por mês, mas pode ser adaptado a depender da carga de trabalho do ambiente
+- Utiliza a quantidade de leitura como parâmetro que pode ser alterar, considerando se a utilização do indice 
+ é de fato baixa em considerando com a carga de trabalho
+
+### Benefícios
+
+-  Melhoria nas operações de escrita nas tabelas afetadas
+-  Ganho de armazenamento em disco
+-  Otimização no uso de memória
   
 ---
 
