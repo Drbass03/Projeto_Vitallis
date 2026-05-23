@@ -48,7 +48,7 @@ GO
 
     3. Gestão de Privilégios (Controle de Admin)
 
-    No Vitallis, pouquíssimas pessoas devem ter poder de "superusuário". Estes eventos vigiam os administradores.
+    Em uma base de dados, pouquíssimas pessoas devem ter poder de "superusuário". Estes eventos vigiam os administradores.
 
     SERVER_ROLE_MEMBER_CHANGE_GROUP: Alerta quando alguém é adicionado a roles poderosas como sysadmin ou securityadmin.
 
