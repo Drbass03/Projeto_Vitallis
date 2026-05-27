@@ -1,5 +1,5 @@
 CREATE OR ALTER PROCEDURE sp_manut_index
- @DB_name VARCHAR (30) = 'treinamento'
+ @DB_name VARCHAR (30) = 'dbVitallis'
     
 AS
 BEGIN
