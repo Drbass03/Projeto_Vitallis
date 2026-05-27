@@ -1,3 +1,5 @@
+-- Proc que irá mapear os índices pouco utilizados. 
+
 -- Tabela que irá persistir os dados coletados
 CREATE TABLE historico_index (
     nome_db SYSNAME,
