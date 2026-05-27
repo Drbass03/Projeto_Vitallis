@@ -27,7 +27,7 @@ BEGIN
     FROM sys.dm_db_index_physical_stats(DB_ID(@DB_name), NULL, NULL, NULL, 'SAMPLED') ps
     JOIN sys.indexes i ON ps.object_id = i.object_id AND ps.index_id = i.index_id
     WHERE ps.page_count > 1000 -- ignora tabelas pequenas
-     WHERE i.name IS NOT NULL;  -- Ignora Heaps 
+      AND i.name IS NOT NULL;  -- Ignora Heaps 
 
 
     -- Construção da estrutura do email informativo
