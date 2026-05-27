@@ -50,7 +50,7 @@ BEGIN
    
     SELECT @HTML_LINHAS =
 (
-    -- Criação da tabela que será enviada junto ao corpo do email disparado informando quais tabelas teve estatisticas atualizadas. 
+    -- Criação da tabela que será enviada junto ao corpo do email disparado informando quais tabelas tiveram estatisticas atualizadas. 
     SELECT 
         '<tr>' +
         '<td>' + CAST(ID AS VARCHAR) + '</td>' +
