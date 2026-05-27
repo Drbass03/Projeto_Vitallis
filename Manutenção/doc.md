@@ -44,7 +44,8 @@ Responsável por identificar e corrigir **data drift** nas estatísticas das tab
 
 A procedure avalia a necessidade de atualização com base na seguinte lógica:
 
-Caso o percentual ultrapasse o limite definido em `@thresholdPercent`, a estatística é atualizada automaticamente.
+Caso o percentual de drift de dados da tabela ultrapasse o limite estabelecido as estatísticas serão atualizadas.
+O script foi construido com a clausula SAMPLE 50 PERCENTE, para equilibrar precisões de informações e tempo de processamento. 
 
 ### Características
 
