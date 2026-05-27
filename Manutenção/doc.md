@@ -44,6 +44,8 @@ Responsável por identificar e corrigir **data drift** nas estatísticas das tab
 
 A procedure avalia a necessidade de atualização com base na seguinte lógica:
 
+Caso o percentual ultrapasse o limite definido em `@thresholdPercent`, a estatística é atualizada automaticamente.
+
 ### Características
 
 - Execução diária via **SQL Server Agent Job**
@@ -54,8 +56,6 @@ A procedure avalia a necessidade de atualização com base na seguinte lógica:
 
 -  Melhoria na qualidade dos planos de execução
 -  Otimização de queries
-
-Caso o percentual ultrapasse o limite definido em `@thresholdPercent`, a estatística é atualizada automaticamente.
 
 ---
 
