@@ -10,7 +10,7 @@ Esses objetos representam operações típicas de uma aplicação de gestão de 
 
 ## Objetivo
 
-O objetivo desta estrutura é simular um cenário real de aplicação, onde o banco de dados atua como backend para consumo de dados por uma aplicação (API, sistema web, Power Apps, etc.).
+O objetivo desta estrutura é simular um cenário real de aplicação, de modo que o banco de dados receba os comandos T-SQL para consumo de dados por uma aplicação (API, sistema web, Power Apps, etc.).
 
 ## Uso de Parâmetros
 
