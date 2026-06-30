@@ -1,4 +1,4 @@
-#  Manutenção e Monitoramento - Vitallis
+#  Manutenção e Monitoramento 
 
 Esta pasta contém scripts responsáveis pela **manutenção preventiva** e **monitoramento contínuo** do ambiente de banco de dados.
 
