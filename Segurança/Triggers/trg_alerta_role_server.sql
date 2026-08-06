@@ -95,7 +95,7 @@ BEGIN
 
         EXEC msdb.dbo.sp_send_dbmail
             @profile_name = 'ASSISTENTE DBA II',
-            @recipients   = 'gbarcelos.lg@gmail.com',
+            @recipients   = 'dba@empresa.com',
             @subject      = 'ALERTA - Alteração crítica no servidor',
             @body         = @Body;
 
