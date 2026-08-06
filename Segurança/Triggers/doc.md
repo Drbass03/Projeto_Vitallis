@@ -1,4 +1,4 @@
-# Security Triggers
+# Alertas de segurança
 
 Este diretório reúne um conjunto de **DDL Triggers** desenvolvidas para aumentar a segurança da instância do SQL Server por meio do monitoramento de alterações administrativas em tempo real.
 
