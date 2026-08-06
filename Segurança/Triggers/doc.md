@@ -127,13 +127,5 @@ Dessa forma, administradores podem ser notificados imediatamente sobre alteraç�
 - Lista de permissões críticas configurável por tabela, sem necessidade de alterar a trigger.
 - Solução baseada exclusivamente em recursos nativos do SQL Server.
 
----
 
-## Tecnologias utilizadas
 
-- SQL Server DDL Triggers
-- EVENTDATA()
-- Database Mail
-- T-SQL
-- XML
-- Auditoria de Segurança
