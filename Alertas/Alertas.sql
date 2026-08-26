@@ -1,4 +1,4 @@
-
+--Alerta  PLE baixo
 EXEC msdb.dbo.sp_add_alert
     @name = N'PLE abaixo de 600',
     @message_id = 0,
@@ -15,7 +15,7 @@ EXEC msdb.dbo.sp_add_notification
     @notification_method = 1;
 
 
--- Criar alerta Deadlock 
+-- Alerta Deadlock 
 EXEC msdb.dbo.sp_add_alert
     @name = N'Deadlock Detectado',
     @performance_condition = N'SQLServer:Locks|Number of Deadlocks/sec|_Total|>|0',
@@ -33,7 +33,7 @@ EXEC msdb.dbo.sp_add_notification
 
 
 
--- Alerta: TempDB Data Files > 500 MB (ajuste conforme seu ambiente)
+-- Alerta: TempDB Data Files 
 EXEC msdb.dbo.sp_add_alert
     @name = N'TempDB Data Files Growth Detected',
     @message_id = 0,
