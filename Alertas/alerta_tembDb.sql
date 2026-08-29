@@ -1,13 +1,21 @@
-SET NOCOUNT ON;
+-- Tabela que armazena os alertas enviados
+IF NOT EXISTS (SELECT * FROM msdb.sys.tables WHERE name = 'TempDB_Alert_History')
+BEGIN
+    CREATE TABLE msdb.dbo.TempDB_historico_alerta (
+        LastAlertSent DATETIME NOT NULL
+    );
+END
 
--- ====================================================================
--- CONFIGURAÇÕES
--- ====================================================================
-DECLARE @ThresholdPercent INT = 95;           -- Limite para disparar o alerta (%)
-DECLARE @CooldownMinutes INT = 60;             -- Intervalo mínimo entre e-mails (em minutos)
-DECLARE @MailProfileName NVARCHAR(128) = 'SeuPerfilDBMail';
-DECLARE @Recipients NVARCHAR(MAX) = 'equipe-dba@suaempresa.com';
--- ====================================================================
+
+CREATE OR ALTER PROCEDURE dbo.stp_Monitora_TempDB
+    @ThresholdPercent INT = 95,                        -- Limite em % para alerta
+    @CooldownMinutes INT = 60,                        -- Intervalo mínimo entre e-mails (minutos)
+    @MailProfileName NVARCHAR(128) = 'assistente_dba',-- Nome do Perfil no Database Mail
+    @Recipients NVARCHAR(MAX) = 'dba@monitoramento.com' -- Destinatários do alerta
+AS
+BEGIN
+
+SET NOCOUNT ON;
 
 DECLARE @TotalPages BIGINT;
 DECLARE @UsedPages BIGINT;
@@ -24,7 +32,7 @@ SET @PercentUsed = ISNULL(CAST((@UsedPages * 100.0) / NULLIF(@TotalPages, 0) AS 
 
 -- 2. Verifica quando foi enviado o último alerta
 SELECT TOP 1 @LastAlertSent = LastAlertSent 
-FROM msdb.dbo.TempDB_Alert_History;
+FROM msdb.dbo.TempDB_historico_alerta;
 
 -- 3. Valida se o uso atingiu o limite E se o tempo de cooldown já passou
 IF @PercentUsed >= @ThresholdPercent 
@@ -50,8 +58,8 @@ BEGIN
         @importance = 'High';
 
     -- Atualiza ou insere o registro do último e-mail enviado
-    IF EXISTS (SELECT 1 FROM msdb.dbo.TempDB_Alert_History)
-        UPDATE msdb.dbo.TempDB_Alert_History SET LastAlertSent = GETDATE();
+    IF EXISTS (SELECT 1 FROM msdb.dbo.TempDB_historico_alerta)
+        UPDATE msdb.dbo.TempDB_historico_alerta SET LastAlertSent = GETDATE();
     ELSE
-        INSERT INTO msdb.dbo.TempDB_Alert_History (LastAlertSent) VALUES (GETDATE());
+        INSERT INTO msdb.dbo.TempDB_historico_alerta (LastAlertSent) VALUES (GETDATE());
 END
