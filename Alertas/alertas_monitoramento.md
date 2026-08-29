@@ -46,44 +46,30 @@ A captura detalhada dos eventos pode ser complementada posteriormente com **Exte
 
 ---
 
-## Crescimento dos Arquivos do TempDB
+## Utilização do Espaço do TempDB
 
-O TempDB é utilizado por diversas operações internas do SQL Server, incluindo ordenações, operações de hash, tabelas temporárias, version store e outras atividades que necessitam de espaço temporário.
+O **TempDB** é utilizado por diversas operações internas do SQL Server, incluindo ordenações, operações de hash, tabelas temporárias, version store e outras atividades que necessitam de espaço temporário.
 
-Os arquivos de dados possuem um tamanho inicial planejado. O alerta monitora quando o tamanho total dos arquivos ultrapassa esse baseline, indicando que ocorreu crescimento além da capacidade inicialmente configurada.
+Nesta versão do monitoramento, o alerta não considera apenas o tamanho absoluto dos arquivos. A condição é baseada no **percentual de espaço utilizado**, permitindo avaliar o consumo em relação à capacidade atualmente disponível no TempDB.
+
+### Métrica monitorada
+
+O alerta calcula o percentual de utilização do espaço dos arquivos de dados do TempDB:
+
+```text
+Percentual utilizado = Espaço utilizado / Espaço total × 100
+```
+
+A condição de alerta é acionada quando o percentual utilizado ultrapassa o threshold definido.
+
+Essa abordagem torna o monitoramento mais proporcional à capacidade configurada. Um TempDB com arquivos maiores, por exemplo, não precisa ser tratado da mesma forma que um TempDB menor apenas porque ambos atingiram o mesmo número absoluto de MB utilizados.
 
 ### Objetivo
 
-- Detectar crescimento inesperado do TempDB.
-- Identificar mudanças no comportamento do workload.
-- Chamar atenção para possíveis spills, operações de `SORT` ou `HASH`, uso intensivo de tabelas temporárias ou outras atividades que utilizam espaço temporário.
+- Detectar utilização elevada do espaço disponível no TempDB.
+- Identificar situações em que o consumo temporário está se aproximando da capacidade configurada.
+- Monitorar o comportamento do workload sem depender exclusivamente do tamanho absoluto dos arquivos.
+- Chamar atenção para possíveis spills, operações de `SORT` ou `HASH`, uso intensivo de tabelas temporárias, version store ou outras atividades que utilizam espaço temporário.
 
-> O crescimento do TempDB não significa necessariamente que ocorreu um spill. O alerta deve ser tratado como um indicador para investigação.
+> Um percentual elevado de utilização não significa, isoladamente, que exista um problema. O alerta deve ser utilizado como indicador para investigação do workload e das estruturas que estão consumindo espaço no TempDB.
 
----
-
-## Controle de Notificações
-
-Os alertas utilizam o parâmetro:
-
-```sql
-@delay_between_responses
-```
-
-para controlar o intervalo entre notificações.
-
-Esse mecanismo evita o envio excessivo de e-mails quando uma condição permanece ativa por um período prolongado.
-
-Exemplo:
-
-```text
-Condição detectada
-        ↓
-Notificação enviada
-        ↓
-Cooldown configurado
-        ↓
-Nova notificação somente após o intervalo definido
-```
-
-Isso permite manter a visibilidade de problemas persistentes sem gerar excesso de notificações.
