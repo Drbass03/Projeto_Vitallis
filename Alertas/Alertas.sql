@@ -33,25 +33,6 @@ EXEC msdb.dbo.sp_add_notification
 
 
 
--- Alerta: TempDB Data Files 
-EXEC msdb.dbo.sp_add_alert
-    @name = N'TempDB Data Files Growth Detected',
-    @message_id = 0,
-    @severity = 0,
-    @enabled = 1,
-    @delay_between_responses = 300,
-    @performance_condition =
-        N'SQLServer:Databases|Data File(s) Size (KB)|tempdb|>|8192000',
-    @notification_message =
-        N'ALERTA: O TempDB ultrapassou o tamanho inicial planejado de 8 GB. '
-        + N'Verifique possíveis spills, queries com Sort/Hash, tabelas temporárias '
-        + N'e outras operações que possam estar provocando crescimento do TempDB.';
-
--- Notificação
-EXEC msdb.dbo.sp_add_notification
-    @alert_name = N'Crescimento do TempDB Detectado',
-    @operator_name = N'DBA Operator',
-    @notification_method = 1;
 
     
 
