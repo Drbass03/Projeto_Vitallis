@@ -1,6 +1,6 @@
 # Alertas de Monitoramento
 
-Este documento descreve os alertas configurados no SQL Server Agent para monitoramento de indicadores relacionados à memória, concorrência e utilização do TempDB.
+Este documento descreve os alertas criados para monitoramento de indicadores relacionados à memória, concorrência e utilização do TempDB.
 
 ---
 
