@@ -8,13 +8,13 @@ os arquivos do SQL Server no mesmo volume.
 
 A arquitetura definida separa os principais tipos de carga:
 
-  Volume   Finalidade
-  -------- -----------------------------------------------------
-  **F:**   Binários e componentes compartilhados do SQL Server
-  **G:**   Arquivos de dados
-  **H:**   Logs de transações
-  **I:**   Backups
-  **T:**   TempDB e cargas temporárias
+| Volume | Finalidade |
+| :---: | :--- |
+| **F:** | Binários e componentes compartilhados do SQL Server |
+| **G:** | Arquivos de dados |
+| **H:** | Logs de transações |
+| **I:** | Backups |
+| **T:** | TempDB e cargas temporárias |
 
 Essa separação permite organizar melhor as operações de I/O e facilita a
 administração do ambiente.
