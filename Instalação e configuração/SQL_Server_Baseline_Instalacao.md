@@ -1,19 +1,4 @@
 # SQL Server --- Baseline de Instalação e Configuração
-
-## Objetivo
-
-Este documento apresenta o baseline utilizado para a instalação de uma
-instância SQL Server, com foco em uma configuração próxima de um cenário de produção.
-
-A proposta não é apenas instalar o SQL Server, mas estabelecer
-previamente uma arquitetura de infraestrutura, armazenamento e
-parâmetros do Database Engine que favoreça **previsibilidade,
-desempenho, organização e facilidade de manutenção**.
-
-O processo também foi estruturado para permitir que a instalação seja
-realizada de forma **automatizada por linha de comando**, utilizando um
-arquivo de configuração (`ConfigurationFile.ini`).
-
 ------------------------------------------------------------------------
 
 ## 1. Organização do ambiente
