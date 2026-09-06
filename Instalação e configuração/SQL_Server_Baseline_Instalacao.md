@@ -1,4 +1,4 @@
-# SQL Server --- Baseline de Instalação e Configuração
+# SQL Server --- Instalação e Configuração
 ------------------------------------------------------------------------
 
 ## 1. Organização do ambiente
