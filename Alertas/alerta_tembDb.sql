@@ -1,5 +1,5 @@
 -- Tabela que armazena os alertas enviados
-IF NOT EXISTS (SELECT * FROM msdb.sys.tables WHERE name = 'TempDB_Alert_History')
+IF NOT EXISTS (SELECT * FROM msdb.sys.tables WHERE name = 'TempDB_historico_alerta')
 BEGIN
     CREATE TABLE msdb.dbo.TempDB_historico_alerta (
         LastAlertSent DATETIME NOT NULL
