@@ -7,8 +7,12 @@ INCLUDE (idPaciente);
 CREATE INDEX idx_endereco_idPaciente ON sch_pacientes.endereco (idPaciente)
 INCLUDE (logradouro, numero, bairro, cidade, estado);
 
+CREATE NONCLUSTERED INDEX IDX_mostrar_prontuario ON sch_atendimento.ProntuarioEvolucao (IdProntuario, DataAtendimento)
+INCLUDE (idMedico,QueixaPrincipal,ExameFisico,Diagnostico,prescricao) 
+
 CREATE INDEX ix_agconsulta_data ON sch_atendimento.agConsulta (dt_consulta) 
 
 CREATE INDEX IX_dataPedido ON sch_laboratorio.atendimentos (idPaciente, data_atd)
 
 CREATE INDEX IX_dataResultado ON sch_laboratorio.result_exame (idPedido, link_resultado)
+
