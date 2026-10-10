@@ -165,6 +165,21 @@ WHERE p.nome = @nome
 
 
 
+--5 Consulta que retorna os dados do prontuário médico, consultas, diagnosticos... etc 
+
+SELECT 
+	  pe.DataAtendimento,
+	   pe.QueixaPrincipal,
+	   pe.ExameFisico,
+	   pe.Diagnostico,
+	   pe.prescricao,
+	   m.nome AS nome_medico,
+	   m.especialidade
+
+FROM sch_atendimento.ProntuarioEvolucao pe
+INNER JOIN sch_adm_vitalis.medico m
+	ON pe.IdMedico = m.id_medico
+WHERE pe.IdProntuario = @idProntuário
 
 
 
