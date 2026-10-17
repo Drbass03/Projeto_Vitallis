@@ -1,3 +1,5 @@
+-- Proc responsável por inserir um registro no prontuário do paciente
+
 CREATE OR ALTER PROCEDURE sch_atendimento.registro_prontuario
     @ID_prontuario INT,
     @ID_medico INT,
