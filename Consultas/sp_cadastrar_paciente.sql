@@ -1,3 +1,5 @@
+/*Procedure responsável por inserir um novo cadastro de paciente, inserindo dados pessoais, endereço e também a criação de um prontuário.*/
+
 CREATE OR ALTER PROCEDURE sch_pacientes.cadastrar_paciente
     @nome              VARCHAR(30),
     @sexo              CHAR(1),
@@ -100,7 +102,7 @@ BEGIN
         );
         
 
-        -- 4. Confirma as duas operações
+        -- 4. Confirma as três operações
         COMMIT TRANSACTION;
 
 
